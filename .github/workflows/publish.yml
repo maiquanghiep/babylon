@@ -9,10 +9,10 @@ on:
 
 jobs:
   docker_pipeline:
-    uses: babylonlabs-io/.github/.github/workflows/reusable_docker_pipeline.yml@hiep/add-platform
+    uses: maiquanghiep/.github/.github/workflows/reusable_docker_pipeline.yml@hiep/add-platform
     # needs: ["lint_test"]
     secrets: inherit
     with:
-      publish: true
+      publish: false
       dockerfile: ./contrib/images/babylond/Dockerfile
       repoName: babylond
