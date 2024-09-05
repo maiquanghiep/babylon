@@ -3,7 +3,7 @@ name: ci
 on:
   push:
     branches:
-      - '**'
+      - 'disabled'
 
 concurrency:
   group: ci-${{ github.ref }}-${{ github.workflow }}
