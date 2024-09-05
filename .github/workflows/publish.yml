@@ -3,7 +3,7 @@ name: docker_publish
 on:
   push:
     branches:
-    - 'hiep/hiep/docker-build'
+    - 'hiep/docker-build'
     tags:
     - '*'
 
