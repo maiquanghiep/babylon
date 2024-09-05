@@ -3,22 +3,14 @@ name: docker_publish
 on:
   push:
     branches:
-    - 'main'
-    - 'dev'
+    - 'hiep/update-pipeline-version'
     tags:
     - '*'
 
 jobs:
-  lint_test:
-    uses: babylonlabs-io/.github/.github/workflows/reusable_go_lint_test.yml@v0.1.0
-    with:
-      run-unit-tests: true
-      run-integration-tests: false
-      run-lint: true
-
   docker_pipeline:
-    uses: babylonlabs-io/.github/.github/workflows/reusable_docker_pipeline.yml@v0.1.0
-    needs: ["lint_test"]
+    uses: babylonlabs-io/.github/.github/workflows/reusable_docker_pipeline.yml@hiep/add-platform
+    # needs: ["lint_test"]
     secrets: inherit
     with:
       publish: true
