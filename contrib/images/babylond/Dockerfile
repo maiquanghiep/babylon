@@ -3,7 +3,7 @@ FROM golang:1.21 AS build-env
 ARG TARGETOS TARGETARCH
 
 # Version to build. Default is empty
-ARG VERSION
+ARG VERSION="v0"
 ARG BUILD_TAGS=""
 ARG LEDGER_ENABLED="false"
 ARG COSMOS_BUILD_OPTIONS=""
