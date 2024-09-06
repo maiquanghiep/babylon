@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM golang:1.21 AS build-env
+FROM golang:1.21 AS build-env
 
 ARG TARGETOS TARGETARCH
 
@@ -24,8 +24,6 @@ RUN LEDGER_ENABLED=$LEDGER_ENABLED \
     BUILD_TAGS=$BUILD_TAGS \
     COSMOS_BUILD_OPTIONS=$COSMOS_BUILD_OPTIONS \
     LINK_STATICALLY=false \
-    GOOS=${TARGETOS} \
-    GOARCH=${TARGETARCH} \
     make build
 
 FROM debian:bookworm-slim AS wasm-link
