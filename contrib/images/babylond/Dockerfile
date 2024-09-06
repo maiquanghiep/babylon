@@ -1,7 +1,7 @@
 FROM golang:1.21 AS build-env
 
 # Version to build. Default is empty
-ARG VERSION="test"
+ARG VERSION=
 ARG BUILD_TAGS=""
 ARG LEDGER_ENABLED="false"
 ARG COSMOS_BUILD_OPTIONS=""
@@ -27,9 +27,6 @@ RUN LEDGER_ENABLED=$LEDGER_ENABLED \
 FROM debian:bookworm-slim AS wasm-link
 
 RUN apt-get update && apt-get install -y wget bash
-
-# Label should match your github repo
-LABEL org.opencontainers.image.source="https://github.com/babylonlabs-io/babylond:${VERSION}"
 
 # Install libraries
 # Cosmwasm - Download correct libwasmvm version
