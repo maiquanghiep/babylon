@@ -9,7 +9,8 @@ on:
 
 jobs:
   docker_pipeline:
-    uses: maiquanghiep/.github/.github/workflows/reusable_docker_pipeline.yml@hiep/add-platform
+    #uses: maiquanghiep/.github/.github/workflows/reusable_docker_pipeline.yml@hiep/add-platform
+    uses: babylonlabs-io/.github/.github/workflows/reusable_docker_pipeline.yml@hiep/add-platform
     # needs: ["lint_test"]
     secrets: inherit
     with:
