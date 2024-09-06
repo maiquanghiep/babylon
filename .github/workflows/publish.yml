@@ -13,6 +13,7 @@ jobs:
     # needs: ["lint_test"]
     secrets: inherit
     with:
-      publish: false
+      publish: true
       dockerfile: ./contrib/images/babylond/Dockerfile
       repoName: babylond
+      
