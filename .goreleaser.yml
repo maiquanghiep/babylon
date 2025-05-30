@@ -33,7 +33,7 @@ builds:
       - -X github.com/cosmos/cosmos-sdk/version.BuildTags=ledger,muslc,mainnet
       - -linkmode=external
       - -w -s
-      - -extldflags "-Wl,-z,muldefs -static -z noexecstack"
+      - -extldflags "-Wl,-z,muldefs -static -z noexecstack -lm"
     tags:
       - ledger
       - muslc
@@ -61,7 +61,7 @@ builds:
       - -X github.com/cosmos/cosmos-sdk/version.BuildTags=ledger,muslc,mainnet
       - -linkmode=external
       - -w -s
-      - -extldflags "-Wl,-z,muldefs -static -z noexecstack"
+      - -extldflags "-Wl,-z,muldefs -static -z noexecstack -lm"
     tags:
       - ledger
       - muslc
