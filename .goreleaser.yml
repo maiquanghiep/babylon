@@ -10,15 +10,6 @@ before:
     - wget -nc https://github.com/CosmWasm/wasmvm/releases/download/{{ .Env.COSMWASM_VERSION }}/libwasmvm_muslc.x86_64.a -O /lib/libwasmvm_muslc.x86_64.a
     - wget -nc https://github.com/CosmWasm/wasmvm/releases/download/{{ .Env.COSMWASM_VERSION }}/libwasmvm_muslc.aarch64.a -O /lib/libwasmvm_muslc.aarch64.a
     - wget -nc https://github.com/CosmWasm/wasmvm/releases/download/{{ .Env.COSMWASM_VERSION }}/libwasmvmstatic_darwin.a -O /lib/libwasmvmstatic_darwin.a
-
-    - curl -LO https://musl.cc/x86_64-linux-musl-cross.tgz
-    - tar xf x86_64-linux-musl-cross.tgz
-    - mv -n -u x86_64-linux-musl-cross /opt/musl-cross-x86_64
-
-    - curl -LO https://musl.cc/aarch64-linux-musl-cross.tgz
-    - tar xf aarch64-linux-musl-cross.tgz
-    - mv -n -u aarch64-linux-musl-cross /opt/musl-cross-aarch64
-
 builds:
   - id: babylond-linux-amd64
     main: ./cmd/babylond/main.go
@@ -30,8 +21,7 @@ builds:
     goarch:
       - amd64
     env:
-    - CC=/opt/musl-cross-x86_64/bin/x86_64-linux-musl-gcc
-    - LD=/opt/musl-cross-x86_64/bin/x86_64-linux-musl-ld
+    - CC=x86_64-linux-gnu-gcc
     flags:
       - -mod=readonly
       - -trimpath
@@ -59,8 +49,7 @@ builds:
     goarch:
       - arm64
     env:
-      - CC=/opt/musl-cross-aarch64/bin/aarch64-linux-musl-gcc
-      - LD=/opt/musl-cross-aarch64/bin/aarch64-linux-musl-ld
+      - CC=aarch64-linux-gnu-gcc
     flags:
       - -mod=readonly
       - -trimpath
@@ -196,42 +185,11 @@ builds:
       - static_wasm
       - testnet
 archives:
-  - id: zipped
-    builds:
-      - babylond-linux-amd64
-      - babylond-linux-arm64
-      - babylond-darwin
-    name_template: "{{.ProjectName}}-{{ .Version }}-{{ .Os }}-{{ .Arch }}"
-    format: tar.gz
-    wrap_in_directory: false
-    files:
-      - none*
-  - id: zipped-testnet
-    builds:
-      - babylond-testnet-linux-amd64
-      - babylond-testnet-linux-arm64
-      - babylond-testnet-darwin
-    name_template: "{{.ProjectName}}-testnet-{{ .Version }}-{{ .Os }}-{{ .Arch }}"
-    format: tar.gz
-    wrap_in_directory: false
-    files:
-      - none*
   - id: binaries
     builds:
       - babylond-linux-amd64
       - babylond-linux-arm64
-      - babylond-darwin
     name_template: "{{.ProjectName}}-{{ .Version }}-{{ .Os }}-{{ .Arch }}"
-    format: binary
-    wrap_in_directory: false
-    files:
-      - none*
-  - id: binaries-testnet
-    builds:
-      - babylond-testnet-linux-amd64
-      - babylond-testnet-linux-arm64
-      - babylond-testnet-darwin
-    name_template: "{{.ProjectName}}-testnet-{{ .Version }}-{{ .Os }}-{{ .Arch }}"
     format: binary
     wrap_in_directory: false
     files:
