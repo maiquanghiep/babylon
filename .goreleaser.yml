@@ -30,7 +30,7 @@ builds:
       - -X github.com/cosmos/cosmos-sdk/version.AppName=babylond
       - -X github.com/cosmos/cosmos-sdk/version.Version={{ .Version }}
       - -X github.com/cosmos/cosmos-sdk/version.Commit={{ .Commit }}
-      - -X github.com/cosmos/cosmos-sdk/version.BuildTags=ledger,muslc,mainnet,osusergo
+      - -X github.com/cosmos/cosmos-sdk/version.BuildTags=ledger,muslc,mainnet,osusergo,netgo
       - -linkmode=external
       - -w -s
       - -extldflags "-Wl,-z,muldefs -static -z noexecstack -lm -ldl -lpthread"
@@ -39,6 +39,7 @@ builds:
       - muslc
       - mainnet
       - osusergo
+      - netgo
 
   - id: babylond-linux-arm64
     main: ./cmd/babylond/main.go
@@ -59,7 +60,7 @@ builds:
       - -X github.com/cosmos/cosmos-sdk/version.AppName=babylond
       - -X github.com/cosmos/cosmos-sdk/version.Version={{ .Version }}
       - -X github.com/cosmos/cosmos-sdk/version.Commit={{ .Commit }}
-      - -X github.com/cosmos/cosmos-sdk/version.BuildTags=ledger,muslc,mainnet,osusergo
+      - -X github.com/cosmos/cosmos-sdk/version.BuildTags=ledger,muslc,mainnet,osusergo,netgo
       - -linkmode=external
       - -w -s
       - -extldflags "-Wl,-z,muldefs -static -z noexecstack -lm -ldl -lpthread"
@@ -68,6 +69,7 @@ builds:
       - muslc
       - mainnet
       - osusergo
+      - netgo
 
   - id: babylond-darwin
     main: ./cmd/babylond/main.go
@@ -118,7 +120,7 @@ builds:
       - -X github.com/cosmos/cosmos-sdk/version.AppName=babylond
       - -X github.com/cosmos/cosmos-sdk/version.Version={{ .Version }}
       - -X github.com/cosmos/cosmos-sdk/version.Commit={{ .Commit }}
-      - -X github.com/cosmos/cosmos-sdk/version.BuildTags=ledger,muslc,testnet,osusergo
+      - -X github.com/cosmos/cosmos-sdk/version.BuildTags=ledger,muslc,testnet,osusergo,netgo
       - -linkmode=external
       - -w -s
       - -extldflags "-Wl,-z,muldefs -static -z noexecstack -lm -ldl -lpthread"
@@ -127,6 +129,7 @@ builds:
       - muslc
       - testnet
       - osusergo
+      - netgo
 
   - id: babylond-testnet-linux-arm64
     main: ./cmd/babylond/main.go
@@ -147,7 +150,7 @@ builds:
       - -X github.com/cosmos/cosmos-sdk/version.AppName=babylond
       - -X github.com/cosmos/cosmos-sdk/version.Version={{ .Version }}
       - -X github.com/cosmos/cosmos-sdk/version.Commit={{ .Commit }}
-      - -X github.com/cosmos/cosmos-sdk/version.BuildTags=ledger,muslc,testnet,osusergo
+      - -X github.com/cosmos/cosmos-sdk/version.BuildTags=ledger,muslc,testnet,osusergo,netgo
       - -linkmode=external
       - -w -s
       - -extldflags "-Wl,-z,muldefs -static -z noexecstack -lm -ldl -lpthread"
@@ -156,6 +159,7 @@ builds:
       - muslc
       - testnet
       - osusergo
+      - netgo
 
   - id: babylond-testnet-darwin
     main: ./cmd/babylond/main.go
@@ -179,14 +183,13 @@ builds:
       - -X github.com/cosmos/cosmos-sdk/version.AppName=babylond
       - -X github.com/cosmos/cosmos-sdk/version.Version={{ .Version }}
       - -X github.com/cosmos/cosmos-sdk/version.Commit={{ .Commit }}
-      - -X github.com/cosmos/cosmos-sdk/version.BuildTags=ledger,static_wasm,testnet,osusergo
+      - -X github.com/cosmos/cosmos-sdk/version.BuildTags=ledger,static_wasm,testnet
       - -linkmode=external
       - -w -s
     tags:
       - ledger
       - static_wasm
       - testnet
-      - osusergo
 archives:
   - id: zipped
     builds:
