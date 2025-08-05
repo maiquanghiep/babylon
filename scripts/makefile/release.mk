@@ -16,7 +16,8 @@ release-help:
 
 # The below is adapted from https://github.com/osmosis-labs/osmosis/blob/main/Makefile
 GO_VERSION := $(shell grep -E '^go [0-9]+\.[0-9]+' go.mod | awk '{print $$2}')
-GORELEASER_IMAGE := ghcr.io/goreleaser/goreleaser-cross:v$(GO_VERSION)
+GO_MAJOR_MINOR := $(shell cat go.mod | grep -E 'go [0-9].[0-9]+' | cut -d ' ' -f 2 | cut -d '.' -f 1-2)
+GORELEASER_IMAGE := ghcr.io/goreleaser/goreleaser-cross:v$(GO_MAJOR_MINOR)
 COSMWASM_VERSION := $(shell go list -m github.com/CosmWasm/wasmvm/v2 | sed 's/.* //')
 
 release-dry-run:
