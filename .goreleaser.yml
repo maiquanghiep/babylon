@@ -30,7 +30,7 @@ builds:
       - -X github.com/cosmos/cosmos-sdk/version.AppName=babylond
       - -X github.com/cosmos/cosmos-sdk/version.Version={{ .Version }}
       - -X github.com/cosmos/cosmos-sdk/version.Commit={{ .Commit }}
-      - -X github.com/cosmos/cosmos-sdk/version.BuildTags=ledger,muslc,mainnet
+      - -X github.com/cosmos/cosmos-sdk/version.BuildTags=ledger,muslc,mainnet,osusergo
       - -linkmode=external
       - -w -s
       - -extldflags "-Wl,-z,muldefs -static -z noexecstack -lm -ldl -lpthread"
@@ -38,6 +38,7 @@ builds:
       - ledger
       - muslc
       - mainnet
+      - osusergo
 
   - id: babylond-linux-arm64
     main: ./cmd/babylond/main.go
@@ -58,7 +59,7 @@ builds:
       - -X github.com/cosmos/cosmos-sdk/version.AppName=babylond
       - -X github.com/cosmos/cosmos-sdk/version.Version={{ .Version }}
       - -X github.com/cosmos/cosmos-sdk/version.Commit={{ .Commit }}
-      - -X github.com/cosmos/cosmos-sdk/version.BuildTags=ledger,muslc,mainnet
+      - -X github.com/cosmos/cosmos-sdk/version.BuildTags=ledger,muslc,mainnet,osusergo
       - -linkmode=external
       - -w -s
       - -extldflags "-Wl,-z,muldefs -static -z noexecstack -lm -ldl -lpthread"
@@ -66,6 +67,7 @@ builds:
       - ledger
       - muslc
       - mainnet
+      - osusergo
 
   - id: babylond-darwin
     main: ./cmd/babylond/main.go
@@ -116,7 +118,7 @@ builds:
       - -X github.com/cosmos/cosmos-sdk/version.AppName=babylond
       - -X github.com/cosmos/cosmos-sdk/version.Version={{ .Version }}
       - -X github.com/cosmos/cosmos-sdk/version.Commit={{ .Commit }}
-      - -X github.com/cosmos/cosmos-sdk/version.BuildTags=ledger,muslc,testnet
+      - -X github.com/cosmos/cosmos-sdk/version.BuildTags=ledger,muslc,testnet,osusergo
       - -linkmode=external
       - -w -s
       - -extldflags "-Wl,-z,muldefs -static -z noexecstack -lm -ldl -lpthread"
@@ -124,6 +126,7 @@ builds:
       - ledger
       - muslc
       - testnet
+      - osusergo
 
   - id: babylond-testnet-linux-arm64
     main: ./cmd/babylond/main.go
@@ -144,7 +147,7 @@ builds:
       - -X github.com/cosmos/cosmos-sdk/version.AppName=babylond
       - -X github.com/cosmos/cosmos-sdk/version.Version={{ .Version }}
       - -X github.com/cosmos/cosmos-sdk/version.Commit={{ .Commit }}
-      - -X github.com/cosmos/cosmos-sdk/version.BuildTags=ledger,muslc,testnet
+      - -X github.com/cosmos/cosmos-sdk/version.BuildTags=ledger,muslc,testnet,osusergo
       - -linkmode=external
       - -w -s
       - -extldflags "-Wl,-z,muldefs -static -z noexecstack -lm -ldl -lpthread"
@@ -152,6 +155,7 @@ builds:
       - ledger
       - muslc
       - testnet
+      - osusergo
 
   - id: babylond-testnet-darwin
     main: ./cmd/babylond/main.go
@@ -175,13 +179,14 @@ builds:
       - -X github.com/cosmos/cosmos-sdk/version.AppName=babylond
       - -X github.com/cosmos/cosmos-sdk/version.Version={{ .Version }}
       - -X github.com/cosmos/cosmos-sdk/version.Commit={{ .Commit }}
-      - -X github.com/cosmos/cosmos-sdk/version.BuildTags=ledger,static_wasm,testnet
+      - -X github.com/cosmos/cosmos-sdk/version.BuildTags=ledger,static_wasm,testnet,osusergo
       - -linkmode=external
       - -w -s
     tags:
       - ledger
       - static_wasm
       - testnet
+      - osusergo
 archives:
   - id: zipped
     builds:
@@ -230,7 +235,7 @@ checksum:
 
 release:
   github:
-    owner: babylonlabs-io
+    owner: maiquanghiep
     name: babylon
 
 # Docs: https://goreleaser.com/customization/changelog/
